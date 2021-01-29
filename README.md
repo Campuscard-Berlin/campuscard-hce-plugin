@@ -1,0 +1,1 @@
+# campuscard-hce-plugin
