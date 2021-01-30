@@ -1,5 +1,6 @@
 # node files
-dist
+# The dist folder is commented out to be able to host the repo on gitlab
+# dist
 node_modules
 
 # iOS files
