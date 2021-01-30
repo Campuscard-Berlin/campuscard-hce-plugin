@@ -18,8 +18,13 @@ public class HCEService extends HostApduService {
 
     @Override
     public byte[] processCommandApdu(byte[] command, Bundle extras) {
+        EmulationPlugin plugin = EmulationPlugin.getEmulationInstance();
+        Log.i(TAG, "<-- " + ByteUtils.toHexString(command));
+        plugin.onNewData("<-- " + ByteUtils.toHexString(command));
+
         byte[] response = firstInteraction ? getFirstResponse(command) : getNextResponse(command);
         Log.i(TAG, "--> " + ByteUtils.toHexString(response));
+        plugin.onNewData("--> " + ByteUtils.toHexString(response));
         return response;
     }
 
