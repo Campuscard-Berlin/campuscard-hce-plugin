@@ -6,20 +6,20 @@
     "tags": [],
     "methods": [
       {
-        "name": "echo",
-        "signature": "(options: { value: string; }) => any",
+        "name": "changeAppData",
+        "signature": "(options: { lastDigit: number; }) => any",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "{ value: string; }"
+            "type": "{ lastDigit: number; }"
           }
         ],
         "returns": "any",
         "tags": [],
         "docs": "",
         "complexTypes": [],
-        "slug": "echo"
+        "slug": "changeappdata"
       },
       {
         "name": "addListener",
@@ -60,7 +60,7 @@
           "tags": [],
           "docs": "",
           "complexTypes": [],
-          "type": "() => void"
+          "type": "() => any"
         }
       ]
     }

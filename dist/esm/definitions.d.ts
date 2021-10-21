@@ -1,9 +1,7 @@
 import type { PluginListenerHandle } from '@capacitor/core';
 export interface EmulationPlugin {
-    echo(options: {
-        value: string;
-    }): Promise<{
-        value: string;
-    }>;
+    changeAppData(options: {
+        lastDigit: number;
+    }): Promise<void>;
     addListener(eventName: 'onNewData', listenerFunc: (data: string) => void): PluginListenerHandle;
 }

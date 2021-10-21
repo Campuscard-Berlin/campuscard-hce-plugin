@@ -1,12 +1,16 @@
 package berlin.campuscard.hce;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.getcapacitor.Bridge;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
+import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginHandle;
+import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import com.getcapacitor.annotation.Permission;
 
@@ -35,6 +39,23 @@ public class EmulationPlugin extends Plugin {
             return (EmulationPlugin) handle.getInstance();
         }
         return null;
+    }
+
+    @PluginMethod(returnType = PluginMethod.RETURN_NONE)
+    public void changeAppData(PluginCall call) {
+        Log.i("EmulationPlugin", "changing app data -- native");
+        int lastDigit = call.getInt("lastDigit");
+        if (lastDigit < 0 || lastDigit > 9) {
+            call.reject("Last digit should be a single-digit number");
+            return;
+        }
+
+        SharedPreferences sp = this.bridge.getContext().getSharedPreferences("com.berlin.campuscard.hce.library", Context.MODE_PRIVATE);
+        SharedPreferences.Editor e = sp.edit();
+        e.putString("librarydata", "00000000000000000000485548533031323334353" + lastDigit + "3000000000000000000000");
+        e.apply();
+
+        call.resolve();
     }
 
     @Override

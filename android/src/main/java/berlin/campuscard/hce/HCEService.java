@@ -1,6 +1,8 @@
 package berlin.campuscard.hce;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,7 +46,11 @@ public class HCEService extends HostApduService {
     }
 
     private Emulation getEmulation() throws InvalidParameterException {
-        Application libraryApplication = new LibraryApplication();
+        Log.e(TAG, "getEmulation");
+        SharedPreferences sp = getSharedPreferences("com.berlin.campuscard.hce.library", Context.MODE_PRIVATE);
+        String s = sp.getString("librarydata", null);
+        Log.i(TAG, s);
+        Application libraryApplication = new LibraryApplication(s);
         Application[] applications = new Application[] {libraryApplication};
         SecureElement seWrapper = new SecureElement(applications);
         return new Emulation(seWrapper);

@@ -9,9 +9,8 @@ const Emulation = core.registerPlugin('Emulation', {
 });
 
 class EmulationWeb extends core.WebPlugin {
-    async echo(options) {
-        console.log('ECHO', options);
-        return options;
+    changeAppData(_options) {
+        return new Promise((_resolve, reject) => reject("Not implemented"));
     }
 }
 
