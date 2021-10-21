@@ -38,6 +38,7 @@ public class HCEService extends HostApduService {
             firstInteraction = false;
             return Iso7816.RESPONSE_SUCCESS;
         } catch (InvalidParameterException e) {
+            Log.e(TAG, e.getMessage());
             return Iso7816.RESPONSE_INTERNAL_ERROR;
         }
     }

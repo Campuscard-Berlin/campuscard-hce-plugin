@@ -36,7 +36,7 @@ public class Authentication {
 
     public byte[] initiate(byte keyNumber) throws InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchKeyException {
         // 1. The reader asked for AES authentication for a specific key.
-        if (keyNumber != 0) {
+        if (keyNumber != 1) {
             throw new NoSuchKeyException();
         }
 

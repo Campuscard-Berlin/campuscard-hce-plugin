@@ -5,6 +5,6 @@ import berlin.campuscard.hce.desfire.InvalidParameterException;
 
 class LibraryAID extends AID {
     LibraryAID() throws InvalidParameterException {
-        super("015548");
+        super("332211");
     }
 }

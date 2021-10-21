@@ -5,6 +5,6 @@ import berlin.campuscard.hce.desfire.AESKey;
 
 class LibraryAESKey0 extends AESKey {
     LibraryAESKey0() throws InvalidParameterException {
-        super("00000000000000000000000000000000");
+        super("FF112233445566778899AABBCCDDEEFF");
     }
 }
